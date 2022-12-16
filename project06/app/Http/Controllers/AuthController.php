@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
-use Dotenv\Validator;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator as FacadesValidator;
+use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -14,7 +13,7 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        $validator = FacadesValidator::make($request->all(),[
+        $validator = Validator::make($request->all(),[
             'name' => 'required|string|max:225',
             'email' => 'required|string|email|max:225|unique:users',
             'password' => 'required|string|password|min:6'
