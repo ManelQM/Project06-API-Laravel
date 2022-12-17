@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -58,4 +59,23 @@ class User extends Authenticatable implements JWTSubject
             return [];
             }
 
+    public function messages()
+    {
+        return $this-> hasMany(Message::class);
+    }        
+
+    public function games() 
+    {
+        return $this -> hasMany(Game::class);
+    }
+
+    public function parties()
+    {
+        return $this -> belongsToMany(Party::class); 
+    }
+
+    public function allParties()
+    {
+        return $this -> hasMany(Party::class);
+    }
 }
