@@ -31,9 +31,15 @@ use Illuminate\Http\Request;
 
             //USER PARTY ENDPOINTS
             
-    Route::get('users/myparties', [UserController::class, 'getAllMyParties']);
+    Route::get('users/myparties', [UsersController::class, 'getAllMyParties']);
 
            //USER GAME ENDPOINTS
 
-    Route::get('users/mygames', [UserController::class,'getAllMyGames']);
+    Route::get('users/mygames', [UsersController::class,'getAllMyGames']);
+
+           // PARTY ENDPOINTS
+    
+    Route::post('parties/createparty', [PartiesController::class, 'createParty']); 
+    Route::post('parties/newuser/{id}',[PartiesController::class, 'newUserToParty']);
+    Route::delete('parties/delete/{id}', [PartiesController::class, 'deleteUserParty']); 
 
