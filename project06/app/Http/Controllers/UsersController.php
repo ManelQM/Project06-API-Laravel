@@ -11,6 +11,9 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
+        // UPDATE USER PROFILE
+
     public function updateMyProfile(Request $request){
 
         try {
@@ -49,7 +52,7 @@ class UserController extends Controller
             };
     
         }
-
+                // GET ALL PARTIES FROM A USER
         public function getAllMyParties() 
         {
             Log::info('Getting all parties');
@@ -78,4 +81,36 @@ class UserController extends Controller
                 ],500);
             }
         }
+
+                // GET ALL GAMES FROM A USER
+
+        public function getAllMyGames()
+            {
+                Log::info('Getting all Games');
+
+                try {
+
+                    $user_id = auth()->user()->id;
+                    $games = Game::where(function($query){
+    
+                        $query->select('*')->from('users')->whereColumn('games.user_id', 'user_id');
+    
+    
+                    },$user_id)->get();
+    
+                    return response([
+                        'success' => true,
+                        'message' => 'Showing all your Games',
+                        'data' => $games
+                    ], 200);
+                } catch (\Throwable $th){
+                    Log::error($th->getMessage());
+    
+                    return response([
+                        'success' => false,
+                        'message' => 'Error getting all your Games'
+                    ],500);
+                }
+
+        }    
 }
