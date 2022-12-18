@@ -58,5 +58,41 @@ class PartyController extends Controller
 
         }
 
+        public function newUserToParty($id)
+            
+            {
+                try{
+                    $user_id = auth()->user()->id;
+                    $party_id = $id; 
+                    $party = Party::find($party_id);
+
+                    if(!$party){
+                        return response()->json([
+                            'success'=> true,
+                            'message'=> 'Cant add new user to party',
+                        ], 400);
+                    }
+
+                    DB::table('user_party')->insert([
+                        'party_id' => $party_id,
+                        'user_id' => $user_id,
+                    ]);
+
+                    return response()->json([
+                        'success' => true,
+                        'message' => 'New User added to the Party',
+                    ], 200);
+                }catch (\Throwable $th){
+
+                    Log::error('Error adding new user', $th->getMessage());
+
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'I dont know what happens here...Error',
+                    ], 500);
+                }
+
+            }
+
     }
 
