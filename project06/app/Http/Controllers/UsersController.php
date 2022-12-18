@@ -49,4 +49,33 @@ class UserController extends Controller
             };
     
         }
+
+        public function getAllMyParties() 
+        {
+            Log::info('Getting all parties');
+
+            try {
+
+                $user_id = auth()->user()->id;
+                $parties = Party::where(function($query){
+
+                    $query->select('*')->from('users')->whereColumn('parties.user_id', 'user_id');
+
+
+                },$user_id)->get();
+
+                return response([
+                    'success' => true,
+                    'message' => 'Showing all your parties',
+                    'data' => $parties
+                ], 200);
+            } catch (\Throwable $th){
+                Log::error($th->getMessage());
+
+                return response([
+                    'success' => false,
+                    'message' => 'Error getting all your parties'
+                ],500);
+            }
+        }
 }
