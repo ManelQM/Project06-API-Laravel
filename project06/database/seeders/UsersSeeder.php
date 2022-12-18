@@ -17,10 +17,41 @@ class UsersSeeder extends Seeder
     {
         DB::table('users')->insert([
             [
-                'name' => 'Virgilio',
+                'name' => 'Ciceron',
                 'email' => 'virgilio@gmail.com',
                 'password' => 'virgilio1234',
-            ]
+            ],
+
+            [
+                'name' => 'Seneca',
+                'email' => 'seneca@gmail.com',
+                'password' => 'seneca1234',
+            ],
+
+            [
+                'name' => 'Caligula',
+                'email' => 'caligula@gmail.com',
+                'password' => 'caligula1234',
+            ],
+
+            [
+                'name' => 'Neron',
+                'email' => 'neron@gmail.com',
+                'password' => 'neron1234',
+            ],
+
+            [
+                'name' => 'Tiberio',
+                'email' => 'tiberio@gmail.com',
+                'password' => 'tiberio1234',
+            ],
+            
+            [
+                'name' => 'Plotino',
+                'email' => 'plotino@gmail.com',
+                'password' => 'plotino1234',
+            ],
+
             ]);
     }
 }
