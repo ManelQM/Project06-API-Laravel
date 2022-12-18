@@ -37,7 +37,7 @@ use Illuminate\Http\Request;
 
     Route::get('users/mygames', [UsersController::class,'getAllMyGames']);
 
-           // PARTY ENDPOINTS
+           //PARTY ENDPOINTS
     
     Route::post('parties/createparty', [PartiesController::class, 'createParty']); 
     Route::post('parties/newuser/{id}',[PartiesController::class, 'newUserToParty']);
