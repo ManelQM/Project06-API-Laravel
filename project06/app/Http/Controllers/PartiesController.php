@@ -93,6 +93,37 @@ class PartyController extends Controller
                 }
 
             }
+                    // DELETE USER FROM PARTY
+            public function deleteUserParty($id)
+            {
+                try{
+
+                    $user_id =auth()->user()->id;
+                    $party_id =$id;
+                    $party = DB::table('user_party')->where('party_id', '=', $party_id)
+                    ->where('user_id', '=', $user_id)
+                    ->delete();
+
+                   if(!$party) {
+
+                    return response()->json([
+                        'success' => true,
+                        'message' => 'Cant found the party'
+                    ], 400);
+                   }
+                   return response()->json([
+                    'success' => true,
+                    'message' => 'User Delete with success',
+                   ], 200);
+                }catch (\Throwable $th) {
+                    Log::error("Error" , $th->getMessage());
+        
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'Something wrong its happening here',
+                    ], 500);
+                }
+            }
 
     }
 
