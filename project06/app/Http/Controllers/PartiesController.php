@@ -58,6 +58,8 @@ class PartyController extends Controller
 
         }
 
+            //ADD NEW USER TO PARTY
+
         public function newUserToParty($id)
             
             {

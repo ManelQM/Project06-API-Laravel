@@ -1,8 +1,8 @@
     <?php
     
     use App\Http\Controllers\AuthController;
-use App\Http\Controllers\UserController;
-use Illuminate\Http\Request;
+    use App\Http\Controllers\UserController;
+    use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Route;
 
     /*
@@ -42,4 +42,8 @@ use Illuminate\Http\Request;
     Route::post('parties/createparty', [PartiesController::class, 'createParty']); 
     Route::post('parties/newuser/{id}',[PartiesController::class, 'newUserToParty']);
     Route::delete('parties/delete/{id}', [PartiesController::class, 'deleteUserParty']); 
+    
+           //GAME ENDPOINT 
+
+    Route::get('games/parties/{id}', [GamesController::class, 'getPartiesGame']);
 
