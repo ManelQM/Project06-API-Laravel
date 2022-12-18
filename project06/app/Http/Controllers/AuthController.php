@@ -53,7 +53,7 @@ class AuthController extends Controller
         ]);
 
     }
-    public function profile (){
+    public function myProfile (){
         return response() -> json([
             'user' => auth()->user()
         ]);

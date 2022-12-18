@@ -18,11 +18,13 @@
     Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
     });
-            // CARGO CON MI CRUD +
-            //USER AND STUFF 
+            // ONCE UPON THE CRUD
+
+            //USER
+
     Route::post('users/register', [AuthController::class, 'register']); 
     Route::post('users/login',[AuthController::class, 'login']);
-
-    
+    Route::get('users/logout',[AuthController::class,'logout']);
+    Route::get('users/myProfile',[AuthController::class,'myProfile']);   
 
 
