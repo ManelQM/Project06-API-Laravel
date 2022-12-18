@@ -1,7 +1,8 @@
     <?php
     
     use App\Http\Controllers\AuthController;
-    use Illuminate\Http\Request;
+use App\Http\Controllers\UserController;
+use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Route;
 
     /*
@@ -26,6 +27,13 @@
     Route::post('users/login',[AuthController::class, 'login']);
     Route::get('users/logout',[AuthController::class,'logout']);
     Route::get('users/myProfile',[AuthController::class,'myProfile']);   
+    Route::put('users/myProfile/update', [UserController::class,'updateMyProfile']);
 
-                
+            //USER PARTY ENDPOINTS
+            
+    Route::get('users/myparties', [UserController::class, 'getAllMyParties']);
+
+           //USER GAME ENDPOINTS
+
+    Route::get('users/mygames', [UserController::class,'getAllMyGames']);
 
