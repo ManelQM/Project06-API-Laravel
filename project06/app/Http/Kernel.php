@@ -64,5 +64,10 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'jwt.auth' => \Tymon\JWTAuth\Middleware\GetUserFromToken::class,
+        'isUser' => \App\Http\Middleware\isUser::class,
+        'isAdmin' => \App\Http\Middleware\isAdmin::class,
     ];
 }
+
+
+
