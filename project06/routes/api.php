@@ -19,19 +19,21 @@
     |
     */
 
-    Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-    });
+   
             // ONCE UPON THE CRUD
 
             //USER
-
+         
     Route::post('users/register', [AuthController::class, 'register']); 
+
+            // USER MIDDLEWARE
+    Route::group(['middleware' => ['jwt.auth']], function () {
+
     Route::post('users/login',[AuthController::class, 'login']);
-    Route::get('users/logout',[AuthController::class,'logout']);
+    Route::post('users/logout',[AuthController::class,'logout']);
     Route::get('users/myProfile',[AuthController::class,'myProfile']);   
     Route::put('users/myProfile/update', [UserController::class,'updateMyProfile']);
-
+       
             //USER PARTY ENDPOINTS
             
     Route::get('users/myparties', [UsersController::class, 'getAllMyParties']);
@@ -49,4 +51,6 @@
            //GAME ENDPOINT 
 
     Route::get('games/parties/{id}', [GamesController::class, 'getPartiesGame']);
+
+              });
 

@@ -16,6 +16,7 @@ class AuthController extends Controller
     {
         $validator = Validator::make($request->all(),[
             'name' => 'required|string|max:225',
+            'nickname'=> 'required|string|max:255',
             'email' => 'required|string|email|max:225|unique:users',
             'password' => 'required|string|password|min:6'
         ]);
@@ -38,6 +39,8 @@ class AuthController extends Controller
         return response()->json (compact('user', 'token'),201);
     }
 
+            //LOGIN
+
     public function login (Request $request){
         $input = $request->only('email', 'password');
         $jwt_token = null;
@@ -54,6 +57,8 @@ class AuthController extends Controller
         ]);
 
     }
+
+            //LOGOUT
 
     public function logout(Request $request)
     {

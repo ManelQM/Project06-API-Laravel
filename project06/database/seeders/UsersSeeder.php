@@ -19,17 +19,15 @@ class UsersSeeder extends Seeder
             [
                 'name' => 'Ciceron',
                 'nickname' => 'Cice',
-                'email' => 'virgilio@gmail.com',
-                'password' => 'virgilio1234',
-                'rol' => 1,
+                'email' => 'ciceron@gmail.com',
+                'password' => 'ciceron1234',
             ],
 
             [
                 'name' => 'Seneca',
-                'nickname' => 'Sen',
+                'nickname' => 'Se',
                 'email' => 'seneca@gmail.com',
                 'password' => 'seneca1234',
-                'rol' => 0
             ],
 
             [
@@ -37,7 +35,6 @@ class UsersSeeder extends Seeder
                 'nickname' => 'Gula',
                 'email' => 'caligula@gmail.com',
                 'password' => 'caligula1234',
-                'rol' => 1,
             ],
 
             [
@@ -45,7 +42,6 @@ class UsersSeeder extends Seeder
                 'nickname' => 'Nero',
                 'email' => 'neron@gmail.com',
                 'password' => 'neron1234',
-                'rol' => 0,
             ],
 
             [
@@ -53,7 +49,6 @@ class UsersSeeder extends Seeder
                 'nickname' => 'Tib',
                 'email' => 'tiberio@gmail.com',
                 'password' => 'tiberio1234',
-                'rol' => 0,
             ],
             
             [
@@ -61,7 +56,6 @@ class UsersSeeder extends Seeder
                 'nickname' => 'Tino',
                 'email' => 'plotino@gmail.com',
                 'password' => 'plotino1234',
-                'rol' => 0,
             ],
 
             ]);
