@@ -14,14 +14,14 @@ class UsersPartySeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users_parties')->insert(
+        DB::table('user_party')->insert(
             [
                 [
                     'user_id' => 2,
                     'party_id' => 1,
                 ],
                 [
-                    'name' => 'Hello',
+                    'name' => 2,
                     'id_game' => 2,
                 ],
 
@@ -31,7 +31,7 @@ class UsersPartySeeder extends Seeder
                 ],
 
                 [
-                    'name' => 'Cat',
+                    'name' => 3,
                     'id_game' => 5,
                 ],
             ]
