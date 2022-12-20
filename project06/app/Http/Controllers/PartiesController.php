@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 
-class PartyController extends Controller
+class PartiesController extends Controller
 {
 
                 // NEW PARTY

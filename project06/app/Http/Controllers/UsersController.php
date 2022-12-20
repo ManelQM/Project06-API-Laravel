@@ -9,7 +9,7 @@ use illuminate\Support\Facades\Log;
 use illuminate\support\facades\Validator;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class UsersController extends Controller
 {
 
         // UPDATE USER PROFILE

@@ -8,20 +8,23 @@ use Symfony\Component\HttpFoundation\Response;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Illuminate\Support\Facades\Auth;
 
-class AuthController extends Controller
-{
-    const USER_ROL_ID = 1; 
+                  
+    
+    class AuthController extends Controller
+    {
+        const USER_ROL_ID = 0; 
 
     public function register(Request $request)
     {
+        // dd($request->name);
         $validator = Validator::make($request->all(),[
-            'name' => 'required|string|max:225',
-            'nickname'=> 'required|string|max:255',
-            'email' => 'required|string|email|max:225|unique:users',
-            'password' => 'required|string|password|min:6'
+            'name'=>'required|string|max:225',
+            'nickname'=>'required|string|max:255',
+            'email'=>'required|string|email|max:225|unique:users',
+            'password'=>'required|string|min:'
         ]);
 
-        if ($validator -> fails()) {
+        if ($validator->fails()) {
             return response()->json([
                 'success' => false,
                 'message' => $validator->messages()
@@ -29,13 +32,13 @@ class AuthController extends Controller
         }
 
         $user = User::create([
-            'name' => $request->get('name'), 
-            'nickname' => $request ->get('nickname'),
-            'email' => $request ->get ('email'),
+            'name' => $request->name, 
+            'nickname' => $request ->nickname,
+            'email' => $request ->email,
             'password' => bcrypt($request->password)
         ]);
         
-        $user->roles()->attach(self::USER_ROL_ID);
+        // $user->roles()->attach(self::USER_ROL_ID);
         $token = JWTAuth::fromUser($user); 
         return response()->json (compact('user', 'token'),201);
     }
@@ -43,10 +46,11 @@ class AuthController extends Controller
             //LOGIN
 
     public function login (Request $request){
-        $input = $request->only('email', 'password');
+        $input = $request->only("email", "password");
         $jwt_token = null;
-        
+        // dd($request->password);
         if(!$jwt_token =JWTAuth::attempt($input)){
+            // dd($input);
             return response()->json([
                 'success' => false,
                 'message' => 'Invalid Email or Password',
@@ -56,30 +60,25 @@ class AuthController extends Controller
             'success' => true,
             'token' => $jwt_token,
         ]);
-
     }
 
             //LOGOUT
 
-    public function logout(Request $request)
-    {
-        $this->validate($request, [
-            'token' => 'required'
-        ]);
-        try {
-            JWTAuth::invalidate($request->token);
-            return response()->json([
-                'success' => true,
-                'message' => 'User logged out successfully'
-            ]);
-        } catch (\Exception $exception) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Sorry, the user cannot be logged out'
-            ], Response::HTTP_INTERNAL_SERVER_ERROR);
-        }
-    }
-
+    public function logout(){
+           try {
+            auth()->logout();
+            return response()->json(['message' => 'Logged out!!!']);
+                } 
+                
+                catch (\Throwable $th) {
+                   
+                    return response()->json([
+                        'success' => true,
+                        'message' => 'Cant log out'
+                    ], 500);
+                }
+            }
+        
     public function myProfile (){
         return response() -> json([
             'user' => auth()->user()

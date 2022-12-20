@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
         
 
 
-    class GameController extends Controller
+    class GamesController extends Controller
     {
         // PARTIES FROM GAME 
         public function getPartiesGame($id) 

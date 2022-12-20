@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class UsersSeeder extends Seeder
 {
@@ -16,48 +16,71 @@ class UsersSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            [
-                'name' => 'Ciceron',
-                'nickname' => 'Cice',
-                'email' => 'ciceron@gmail.com',
-                'password' => 'ciceron1234',
-            ],
-
-            [
-                'name' => 'Seneca',
-                'nickname' => 'Se',
-                'email' => 'seneca@gmail.com',
-                'password' => 'seneca1234',
-            ],
-
-            [
-                'name' => 'Caligula',
-                'nickname' => 'Gula',
-                'email' => 'caligula@gmail.com',
-                'password' => 'caligula1234',
-            ],
-
-            [
-                'name' => 'Neron',
-                'nickname' => 'Nero',
-                'email' => 'neron@gmail.com',
-                'password' => 'neron1234',
-            ],
-
-            [
-                'name' => 'Tiberio',
-                'nickname' => 'Tib',
-                'email' => 'tiberio@gmail.com',
-                'password' => 'tiberio1234',
-            ],
             
             [
-                'name' => 'Plotino',
-                'nickname' => 'Tino',
-                'email' => 'plotino@gmail.com',
-                'password' => 'plotino1234',
+                "name"=>"Cesar Augusto",
+                "nickname"=>"Caesar",
+                "email"=>"cesar@mail.com",
+                "password"=>"cesar1234",
+                "rol"=>false
+
             ],
 
-            ]);
+            [
+                "name"=>"Ciceron",
+                "nickname"=>"Cice",
+                "email"=>"ciceron@mail.com",
+                "password"=>"ciceron1234",
+                "rol"=>false
+
+            ],
+
+            [
+                "name"=>"Caligula",
+                "nickname"=>"Gula",
+                "email"=>"caligula@mail.com",
+                "password"=>"caligula1234",
+                "rol"=>true
+
+            ],
+
+            [
+                "name"=>"Nerón",
+                "nickname"=>"Nero",
+                "email"=>"neron@mail.com",
+                "password"=>"neron1234",
+                "rol"=>false
+
+            ],
+
+            [
+                "name"=>"Tiberio",
+                "nickname"=>"Tibe",
+                "email"=>"tiberio@mail.com",
+                "password"=>"tiberio1234",
+                "rol"=>false
+
+            ],
+
+            [
+                "name"=>"Plotino",
+                "nickname"=>"Tino",
+                "email"=>"plotino@mail.com",
+                "password"=>"plotino1234",
+                "rol"=>false
+
+            ],
+
+            [
+                "name"=>"Seneca",
+                "nickname"=>"Sene",
+                "email"=>"seneca@mail.com",
+                "password"=>"seneca1234",
+                "rol"=>false
+
+            ],
+
+
+        ]);
     }
 }
