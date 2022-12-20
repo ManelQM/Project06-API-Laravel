@@ -20,8 +20,8 @@ class UsersController extends Controller
             $validator = Validator::make($request->all(), [
                 'name' => 'required|max:225',
                 'nickname' => 'required'
-            ]);
             
+            ]);            
             if($validator ->fails()) {
                 return response([
                     'success' => false,
@@ -35,7 +35,7 @@ class UsersController extends Controller
             $user->name = $request->input('name');
             $user->nickname = $request ->input('nickname');
             $user->save();
-            
+            dd($request->name);
             return response([
                 'success' => true,
                 'messages' => 'updated user!!',
@@ -44,7 +44,7 @@ class UsersController extends Controller
             
             } catch (\Throwable $th) {
                 Log::error($th->getMessage());
-
+               
                 return response([
                     'success' => false,
                     'messages' => 'cant update :('
@@ -56,7 +56,7 @@ class UsersController extends Controller
         public function getAllMyParties() 
         {
             Log::info('Getting all parties');
-
+        
             try {
 
                 $user_id = auth()->user()->id;
@@ -80,7 +80,32 @@ class UsersController extends Controller
                     'message' => 'Error getting all your parties'
                 ],500);
             }
-        }
+            //     try {
+        //         // Raw querys
+        //         // $tasks = DB::select('select * from tasks');
+    
+        //         // Query Builder
+        //         // $tasks = DB::table('tasks')->get();
+    
+        //         // Model
+        //         $user_id = auth()->user()->id;
+        //         $parties = Party::query()->get();
+    
+        //         return response([
+        //             'success' => true,
+        //             'message' => 'All tasks retrieved successfully',
+        //             'data' => $parties
+        //         ], 200);
+        //     } catch (\Throwable $th) {
+        //         Log::error($th->getMessage());
+    
+        //         return response([
+        //             'success' => false,
+        //             'message' => 'No se han podido recuperar las tareas'
+        //         ], 500);
+        //     }
+        // }
+       }
 
                 // GET ALL GAMES FROM A USER
 

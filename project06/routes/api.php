@@ -32,8 +32,8 @@
 
 
                 Route::post('/logout', [AuthController::class, 'logout']);
-                Route::get('users/myProfile', [AuthController::class, 'myProfile']);
-                Route::put('users/myProfile/update', [UsersController::class, 'updateMyProfile']);
+                Route::get('users/myprofile', [AuthController::class, 'myProfile']);
+                Route::put('users/myprofile/update', [UsersController::class, 'updateMyProfile']);
 
                 //USER PARTY ENDPOINTS
 
